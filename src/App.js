@@ -242,7 +242,7 @@ function App() {
     <div className="App">
       <header className="app-header">
         <div className="header-content">
-          <h1>Academic Attendance Manager</h1>
+          <h1>Academic Attendance Checker</h1>
           <p>Professional attendance tracking and analytics</p>
         </div>
       </header>
