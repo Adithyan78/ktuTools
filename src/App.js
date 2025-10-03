@@ -251,10 +251,10 @@ function App() {
           <span className="btn-icon">📊</span>
           Download PDF Report
         </button>
-        <button onClick={downloadTextReport} className="download-btn text-btn">
+        {/* <button onClick={downloadTextReport} className="download-btn text-btn">
           <span className="btn-icon">📝</span>
           Export Text Report
-        </button>
+        </button> */}
       </div>
 
       <div className="subjects-container">
