@@ -1,5 +1,6 @@
 // App.jsx
 import React, { useState } from "react";
+import { Analytics } from '@vercel/analytics/react';
 import "./App.css";
 
 function App() {
@@ -447,6 +448,8 @@ function App() {
       <footer className="app-footer">
         <p>Academic Attendance Management System © 2024</p>
       </footer>
+
+      <Analytics />
     </div>
   );
 }
