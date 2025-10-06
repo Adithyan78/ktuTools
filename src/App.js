@@ -243,7 +243,7 @@ function App() {
       <header className="app-header">
         <div className="header-content">
           <h1>Academic Attendance Checker</h1>
-          <p>Professional attendance tracking and analytics</p>
+          <p>"Determine the maximum number of days you can miss while still maintaining a minimum attendance of 75%, or calculate the number of days you are required to attend in order to achieve the 75% attendance threshold."</p>
         </div>
       </header>
 
