@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   const [subjects, setSubjects] = useState([
-    { name: "Mathematics", T: "", A: "", customPercentage: 75 },
+    { name: "", T: "", A: "", customPercentage: 75 },
   ]);
 
   const addSubject = () => {
@@ -168,13 +168,13 @@ function App() {
           doc.setTextColor(6, 150, 105);
           doc.text('✓ ON TRACK', statusX, yPosition + 12, { align: 'right' });
           doc.setTextColor(75, 85, 99);
-          doc.text(`Can bunk: ${result.maxBunks} classes`, statusX, yPosition + 22, { align: 'right' });
+          doc.text(`Permitted Absences: ${result.maxBunks} classes`, statusX, yPosition + 22, { align: 'right' });
           doc.text(`Projected: ${result.attendanceAfterMaxBunks}%`, statusX, yPosition + 29, { align: 'right' });
         } else {
           doc.setTextColor(220, 38, 38);
-          doc.text('⚠️ REQUIRES ACTION', statusX, yPosition + 12, { align: 'right' });
+          doc.text(' REQUIRES ACTION', statusX, yPosition + 12, { align: 'right' });
           doc.setTextColor(75, 85, 99);
-          doc.text(`Need to attend: ${result.classesNeeded}`, statusX, yPosition + 22, { align: 'right' });
+          doc.text(`Need to attend: ${result.classesNeeded}classes`, statusX, yPosition + 22, { align: 'right' });
           doc.text(`Projected: ${result.attendanceAfterClasses}%`, statusX, yPosition + 29, { align: 'right' });
         }
       } else {
@@ -195,55 +195,14 @@ function App() {
     doc.save(`attendance-report-${new Date().toISOString().split('T')[0]}.pdf`);
   };
 
-  const downloadTextReport = () => {
-    let reportContent = `ACADEMIC ATTENDANCE REPORT\n`;
-    reportContent += `========================================\n`;
-    reportContent += `Generated: ${new Date().toLocaleDateString()}\n`;
-    reportContent += `========================================\n\n`;
-
-    subjects.forEach((subject, index) => {
-      const result = calculateAttendance(subject.T, subject.A, subject.customPercentage);
-      
-      reportContent += `SUBJECT: ${subject.name || `Subject ${index + 1}`}\n`;
-      reportContent += `Required Attendance: ${subject.customPercentage}%\n`;
-      
-      if (subject.T && subject.A) {
-        reportContent += `Classes Held: ${subject.T}\n`;
-        reportContent += `Classes Attended: ${subject.A}\n`;
-        reportContent += `Current Attendance: ${result.currentPercent}%\n`;
-        
-        if (result.status === "safe") {
-          reportContent += `STATUS: ON TRACK ✓\n`;
-          reportContent += `Available Bunks: ${result.maxBunks} classes\n`;
-          reportContent += `Projected Attendance: ${result.attendanceAfterMaxBunks}%\n`;
-        } else {
-          reportContent += `STATUS: REQUIRES ACTION ⚠️\n`;
-          reportContent += `Additional Classes Required: ${result.classesNeeded}\n`;
-          reportContent += `Projected Attendance: ${result.attendanceAfterClasses}%\n`;
-        }
-      } else {
-        reportContent += `Status: No data entered\n`;
-      }
-      reportContent += `----------------------------------------\n\n`;
-    });
-
-    const blob = new Blob([reportContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `attendance-report-${new Date().toISOString().split('T')[0]}.txt`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
+ 
 
   return (
     <div className="App">
       <header className="app-header">
         <div className="header-content">
-          <h1>Academic Attendance Checker</h1>
-          <p>"Determine the maximum number of days you can miss while still maintaining a minimum attendance of 75%, or calculate the number of days you are required to attend in order to achieve the 75% attendance threshold."</p>
+          <h1>AttendCalc</h1>
+          <p>Calculate the permitted absences or required attendance to meet the minimum threshold</p>
         </div>
       </header>
 
@@ -446,8 +405,9 @@ function App() {
       </div>
 
       <footer className="app-footer">
-        <p>Academic Attendance Management System © 2024</p>
-      </footer>
+  <p>AttendCalc © {new Date().getFullYear()}</p>
+</footer>
+
 
       <Analytics />
     </div>
