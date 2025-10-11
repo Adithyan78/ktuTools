@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://ktu-tools.vercel.app/sitemap.xml
+Sitemap: https://attendcalc.vercel.app/sitemap.xml

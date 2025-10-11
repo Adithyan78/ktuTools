@@ -209,7 +209,7 @@ function App() {
   <meta property="og:type" content="website" />
   <meta property="og:title" content="AttendCalc — Attendance Checker" />
   <meta property="og:description" content="Track attendance, predict absences , and manage class attendance with ease." />
-  <meta property="og:url" content="https://ktu-tools.vercel.app/" />
+  <meta property="og:url" content="https://attendcalc.vercel.app/" />
 
   {/* Twitter */}
   <meta name="twitter:card" content="summary_large_image" />
