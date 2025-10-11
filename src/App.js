@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { Analytics } from '@vercel/analytics/react';
 import "./App.css";
+import { Helmet } from "react-helmet";
+
 
 function App() {
   const [subjects, setSubjects] = useState([
@@ -199,6 +201,22 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+  <title>AttendCalc — Attendance Checker</title>
+  <meta name="description" content="Track attendance, predict bunk days, and manage class attendance with ease." />
+  
+  {/* Open Graph */}
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AttendCalc — Attendance Checker" />
+  <meta property="og:description" content="Track attendance, predict bunk days, and manage class attendance with ease." />
+  <meta property="og:url" content="https://ktu-tools.vercel.app/" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AttendCalc — Attendance Checker" />
+  <meta name="twitter:description" content="Track attendance, predict bunk days, and manage class attendance with ease." />
+</Helmet>
+
       <header className="app-header">
         <div className="header-content">
           <h1>AttendCalc</h1>
